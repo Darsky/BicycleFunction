@@ -7,7 +7,15 @@
 //
 
 #import "BaseSwipViewController.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "BlueteethService.h"
 
-@interface BlueteethServiceViewController : BaseSwipViewController
+@interface BlueteethServiceViewController : BaseSwipViewController<UITableViewDataSource,UITableViewDelegate,BlueteethServiceDelegate>
+{
+    UITableView *_deviceListTableView;
+    NSMutableArray *_deviceArray;
+    BlueteethService *_blueteethService;
+    
+}
 
 @end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DB04BB4F-D3A3-4821-9710-D2AC4B314BE6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BicycleFunction</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>60099987-EECB-4D06-9AF2-B47373CE314D</key>
+		<string>https://github.com/Darsky/BicycleFunction.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BicycleFunction.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>60099987-EECB-4D06-9AF2-B47373CE314D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Darsky/BicycleFunction.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>60099987-EECB-4D06-9AF2-B47373CE314D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>60099987-EECB-4D06-9AF2-B47373CE314D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BicycleFunction</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -19,6 +19,9 @@
 		186575F7198346EC000C67CA /* 7.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575ED198346EC000C67CA /* 7.PNG */; };
 		186575F8198346EC000C67CA /* 8.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575EE198346EC000C67CA /* 8.PNG */; };
 		186575F9198346EC000C67CA /* 9.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575EF198346EC000C67CA /* 9.PNG */; };
+		18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0F11819852AFE00BBE8E7 /* BlueteethService.m */; };
+		18F0F11B19852B5C00BBE8E7 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F0F11A19852B5C00BBE8E7 /* CoreBluetooth.framework */; };
+		18F0F11F19852EED00BBE8E7 /* BlueteethServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0F11E19852EED00BBE8E7 /* BlueteethServiceViewController.m */; };
 		DE16C3E6197E510200AE473E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE16C3E5197E510200AE473E /* AudioToolbox.framework */; };
 		DE16C3E8197E510900AE473E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE16C3E7197E510900AE473E /* ImageIO.framework */; };
 		DE16C3EA197E511100AE473E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE16C3E9197E511100AE473E /* CoreMotion.framework */; };
@@ -75,6 +78,11 @@
 		186575ED198346EC000C67CA /* 7.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.PNG; sourceTree = "<group>"; };
 		186575EE198346EC000C67CA /* 8.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.PNG; sourceTree = "<group>"; };
 		186575EF198346EC000C67CA /* 9.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.PNG; sourceTree = "<group>"; };
+		18F0F11719852AFE00BBE8E7 /* BlueteethService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethService.h; sourceTree = "<group>"; };
+		18F0F11819852AFE00BBE8E7 /* BlueteethService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethService.m; sourceTree = "<group>"; };
+		18F0F11A19852B5C00BBE8E7 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		18F0F11D19852EED00BBE8E7 /* BlueteethServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethServiceViewController.h; sourceTree = "<group>"; };
+		18F0F11E19852EED00BBE8E7 /* BlueteethServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethServiceViewController.m; sourceTree = "<group>"; };
 		DE16C3E5197E510200AE473E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DE16C3E7197E510900AE473E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		DE16C3E9197E511100AE473E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -179,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F0F11B19852B5C00BBE8E7 /* CoreBluetooth.framework in Frameworks */,
 				DE16C3F2197E513F00AE473E /* libstdc++.6.0.9.dylib in Frameworks */,
 				DE16C3F0197E512B00AE473E /* AVFoundation.framework in Frameworks */,
 				DE16C3EE197E512600AE473E /* MediaPlayer.framework in Frameworks */,
@@ -236,6 +245,24 @@
 				186575EF198346EC000C67CA /* 9.PNG */,
 			);
 			path = Plan;
+			sourceTree = "<group>";
+		};
+		18F0F11619852AE700BBE8E7 /* BlueteethConnect */ = {
+			isa = PBXGroup;
+			children = (
+				18F0F11719852AFE00BBE8E7 /* BlueteethService.h */,
+				18F0F11819852AFE00BBE8E7 /* BlueteethService.m */,
+			);
+			path = BlueteethConnect;
+			sourceTree = "<group>";
+		};
+		18F0F11C19852EC800BBE8E7 /* BlueteethService */ = {
+			isa = PBXGroup;
+			children = (
+				18F0F11D19852EED00BBE8E7 /* BlueteethServiceViewController.h */,
+				18F0F11E19852EED00BBE8E7 /* BlueteethServiceViewController.m */,
+			);
+			path = BlueteethService;
 			sourceTree = "<group>";
 		};
 		DE40B35D197E1D0600286876 /* BaiduMap */ = {
@@ -328,6 +355,7 @@
 		DEA585F9197DF4530085B208 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18F0F11A19852B5C00BBE8E7 /* CoreBluetooth.framework */,
 				DE16C3F1197E513F00AE473E /* libstdc++.6.0.9.dylib */,
 				DE16C3EF197E512B00AE473E /* AVFoundation.framework */,
 				DE16C3ED197E512600AE473E /* MediaPlayer.framework */,
@@ -406,6 +434,7 @@
 		DEA5862A197DF4850085B208 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18F0F11619852AE700BBE8E7 /* BlueteethConnect */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +442,7 @@
 		DEA5862B197DF4850085B208 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18F0F11C19852EC800BBE8E7 /* BlueteethService */,
 				DEA58639197E00840085B208 /* BaseViewController */,
 				DEA58631197DF4DE0085B208 /* BicycleNavigation */,
 				DEA5862E197DF49C0085B208 /* MainViewController.h */,
@@ -570,6 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,
 				186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */,
 				DEA5860B197DF4530085B208 /* AppDelegate.mm in Sources */,
@@ -577,6 +608,7 @@
 				DEA58630197DF49C0085B208 /* MainViewController.m in Sources */,
 				DEA58635197DF5530085B208 /* MainCycleView.m in Sources */,
 				DEA58607197DF4530085B208 /* main.m in Sources */,
+				18F0F11F19852EED00BBE8E7 /* BlueteethServiceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
