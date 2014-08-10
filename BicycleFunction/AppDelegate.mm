@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "BNCoreServices.h"
-#import "BNaviSoundManager.h"
 
 @implementation AppDelegate
 

@@ -38,8 +38,11 @@
     if(![_dicoveredPeripherals containsObject:peripheral])
     {
         [_dicoveredPeripherals addObject:peripheral];
+        if ([self.delegate respondsToSelector:@selector(didUpdateConnectPeripheral:)])
+        {
+            [self.delegate didUpdateConnectPeripheral:_dicoveredPeripherals];
+        }
     }
-    NSLog(@"dicoveredPeripherals:%@", _dicoveredPeripherals);
 }
 
 -(BOOL)connect:(CBPeripheral *)peripheral
@@ -94,6 +97,19 @@
 - (BOOL)didBlueteethAvilabel
 {
     return YES;
+}
+
+- (NSArray*)getConnectedDevice
+{
+    NSMutableArray *connectedDeviceArray = [NSMutableArray array];
+    for (CBPeripheral *device in _dicoveredPeripherals)
+    {
+        if (device.state == CBPeripheralStateConnected)
+        {
+            [connectedDeviceArray addObject:device];
+        }
+    }
+    return connectedDeviceArray;
 }
 
 - (void)connectTimeout:(CBPeripheral *)peripheral

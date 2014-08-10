@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
-#import "BNCoreServices.h"
 
 
 @interface BicycleNavigationViewController : UIViewController

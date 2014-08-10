@@ -12,6 +12,7 @@
 @protocol BlueteethServiceDelegate <NSObject>
 @optional
 
+- (void)didUpdateConnectPeripheral:(NSArray*)connects;
 
 @end
 
@@ -29,7 +30,12 @@
 
 - (id)initWithServiceTarget:(id)target;
 
+//对模块的操作
 - (void)startBlueteethService;
-
+- (NSArray*)getConnectedDevice;
 - (BOOL)didBlueteethAvilabel;
+- (BOOL)connect:(CBPeripheral *)peripheral;
+
+//通过模块对蓝牙的操作
+
 @end

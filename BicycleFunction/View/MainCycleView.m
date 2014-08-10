@@ -23,6 +23,9 @@
         demoButton.layer.borderColor = [UIColor whiteColor].CGColor;
         demoButton.layer.masksToBounds = YES;
         demoButton.layer.cornerRadius = 55/2;
+        [demoButton addTarget:self
+                       action:@selector(didCycleButtonTouch:)
+             forControlEvents:UIControlEventTouchDown];
         [self addSubview:demoButton];
         
         _rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self
@@ -62,6 +65,15 @@
          */
     }
 }
+
+- (void)didCycleButtonTouch:(UIButton*)sender
+{
+    if ([self.delegate respondsToSelector:@selector(didSelectAButton:)])
+    {
+        [self.delegate didSelectAButton:sender.titleLabel.text];
+    }
+}
+
 
 
 - (void)drawRect:(CGRect)rect

@@ -41,6 +41,15 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     
 }
 
+- (void)didUpdateConnectPeripheral:(NSArray *)connects
+{
+    if (_deviceArray.count >0)
+    {
+        [_deviceArray removeAllObjects];
+    }
+    [_deviceArray addObjectsFromArray:connects];
+    [_deviceListTableView reloadData];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -62,6 +71,21 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     CBPeripheral *peripheral = _deviceArray[indexPath.row];
     cell.textLabel.text = peripheral.name;
     return  cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [SVProgressHUD showWithStatus:@"正在连接"];
+    CBPeripheral *peripheral = _deviceArray[indexPath.row];
+    if ([_blueteethService connect:peripheral])
+    {
+        [SVProgressHUD dismissWithSuccess:@"连接成功"];
+    }
+    else
+    {
+        [SVProgressHUD dismissWithError:@"连接失败"];
+    }
+    
 }
 
 

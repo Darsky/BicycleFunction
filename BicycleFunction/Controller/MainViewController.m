@@ -9,10 +9,11 @@
 #import "MainViewController.h"
 #import "MainCycleView.h"
 #import "BicycleNavigationViewController.h"
+#import "BlueteethServiceViewController.h"
 
 #define cycleWidth 230.0
 
-@interface MainViewController ()
+@interface MainViewController ()<MainCycleViewDelegate>
 {
     MainCycleView *_mainCycleView;
 }
@@ -44,6 +45,7 @@
                                                                      320/2-cycleWidth/2,
                                                                      cycleWidth,
                                                                      cycleWidth)];
+    _mainCycleView.delegate = self;
     [self.view addSubview:_mainCycleView];
 }
 
@@ -56,6 +58,12 @@
     bicycleNavigationViewController = [[BicycleNavigationViewController alloc] init];
     [self.navigationController pushViewController:bicycleNavigationViewController
                                          animated:YES];
+}
+
+- (void)didSelectAButton:(NSString *)buttonName
+{
+    BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

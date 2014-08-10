@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */; };
 		186575E3198344A9000C67CA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 186575E0198344A9000C67CA /* SVProgressHUD.bundle */; };
 		186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 186575E2198344A9000C67CA /* SVProgressHUD.m */; };
 		186575F0198346EC000C67CA /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575E6198346EC000C67CA /* 1.PNG */; };
@@ -65,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1820F34A199774EB006E1915 /* BlueteethDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethDemoViewController.h; sourceTree = "<group>"; };
+		1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethDemoViewController.m; sourceTree = "<group>"; };
 		186575E0198344A9000C67CA /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		186575E1198344A9000C67CA /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		186575E2198344A9000C67CA /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 			children = (
 				18F0F11D19852EED00BBE8E7 /* BlueteethServiceViewController.h */,
 				18F0F11E19852EED00BBE8E7 /* BlueteethServiceViewController.m */,
+				1820F34A199774EB006E1915 /* BlueteethDemoViewController.h */,
+				1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */,
 			);
 			path = BlueteethService;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */,
 				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,
 				186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */,

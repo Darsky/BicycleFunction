@@ -9,7 +9,7 @@
 #import "BicycleNavigationViewController.h"
 #import "SVProgressHUD.h"
 
-@interface BicycleNavigationViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,BMKGeoCodeSearchDelegate,BMKRouteSearchDelegate,BNNaviRoutePlanDelegate, BNNaviUIManagerDelegate,BMKOfflineMapDelegate>
+@interface BicycleNavigationViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,BMKGeoCodeSearchDelegate,BMKRouteSearchDelegate,BMKOfflineMapDelegate>
 {
     BOOL _setCenter;
     CLLocationCoordinate2D _userCoordinate;
