@@ -27,6 +27,8 @@
 @property (strong, nonatomic) CBCentralManager *manager;
 @property (assign, nonatomic) id target;
 @property (strong, nonatomic) NSMutableArray *dicoveredPeripherals;
+@property (strong, nonatomic) NSMutableArray *observedPeripherals;
+
 
 - (id)initWithServiceTarget:(id)target;
 
@@ -37,5 +39,5 @@
 - (BOOL)connect:(CBPeripheral *)peripheral;
 
 //通过模块对蓝牙的操作
-
+- (void)startObservedPeripheral:(CBPeripheral *)peripheral;
 @end

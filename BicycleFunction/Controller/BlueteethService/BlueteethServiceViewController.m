@@ -7,6 +7,7 @@
 //
 
 #import "BlueteethServiceViewController.h"
+#import "BlueteethDemoViewController.h"
 
 @implementation BlueteethServiceViewController
 static NSString *cellIdentifier = @"DeviceListTableViewCell";
@@ -17,11 +18,21 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     _deviceListTableView = [[UITableView alloc] initWithFrame:CGRectMake(50,
                                                                          20,
                                                                          [UIScreen mainScreen].bounds.size.height-100,
-                                                                         [UIScreen mainScreen].bounds.size.width-30)];
+                                                                         [UIScreen mainScreen].bounds.size.width-70)];
     _deviceListTableView.delegate = self;
     _deviceListTableView.dataSource = self;
     
     [self.view addSubview:_deviceListTableView];
+    
+    _demoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _demoButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.height/2-100/2, _deviceListTableView.frame.origin.y+_deviceListTableView.frame.size.height+10, 100, 30);
+    [_demoButton setTitle:@"开始测试" forState:UIControlStateNormal];
+    [_demoButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    _demoButton.userInteractionEnabled = NO;
+    [_demoButton addTarget:self
+                    action:@selector(pushToDemoView)
+          forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:_demoButton];
 }
 
 - (void)viewDidLoad
@@ -80,14 +91,21 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     if ([_blueteethService connect:peripheral])
     {
         [SVProgressHUD dismissWithSuccess:@"连接成功"];
+        [_demoButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        _demoButton.userInteractionEnabled = YES;
     }
     else
     {
         [SVProgressHUD dismissWithError:@"连接失败"];
     }
-    
 }
 
+- (void)pushToDemoView
+{
+    BlueteethDemoViewController *viewController = [[BlueteethDemoViewController alloc] init];
+    viewController.blueteethService = _blueteethService;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 
 @end

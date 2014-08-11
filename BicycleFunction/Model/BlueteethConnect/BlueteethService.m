@@ -9,6 +9,7 @@
 #import "BlueteethService.h"
 #import "SVProgressHUD.h"
 
+#define     BLE_UUID_DEVICE_INFORMATION_SERVICE   0x180A
 
 @implementation BlueteethService
 
@@ -23,6 +24,7 @@
             _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         }
         _dicoveredPeripherals = [NSMutableArray array];
+        _observedPeripherals = [NSMutableArray array];
     }
     return self;
 }
@@ -94,6 +96,52 @@
     [peripheral discoverServices:nil];
 }
 
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+{
+    if (error)
+    {
+        NSLog(@"Discovered services for %@ with error: %@", peripheral.name, [error localizedDescription]);
+
+        return;
+    }
+    for (CBService *service in peripheral.services)
+    {
+            NSLog(@"Service found with UUID: %@", service.UUID);
+//        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180F"]])
+//        {
+//            [peripheral discoverCharacteristics:nil forService:service];
+//            break;
+//        }
+          //  [peripheral discoverCharacteristics:nil forService:service];
+    }
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    
+    if (error)
+    {
+        NSLog(@"Discovered characteristics for %@ with error: %@", service.UUID, [error localizedDescription]);
+        return;
+    }
+    
+    
+    for (CBCharacteristic *characteristic in service.characteristics)
+    {
+        NSLog(@"Discovered read characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+    }
+    
+    
+    for (CBCharacteristic * characteristic in service.characteristics)
+    {
+        
+        NSLog(@"Discovered write characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+
+    }
+    
+    
+}
+
 - (BOOL)didBlueteethAvilabel
 {
     return YES;
@@ -121,6 +169,20 @@
         [_connectTimer invalidate];//停止时钟
     }
 }
+
+- (void)startObservedPeripheral:(CBPeripheral *)peripheral 
+{
+    return;
+    peripheral.delegate = self;
+    [peripheral setNotifyValue:YES forCharacteristic:[CBCharacteristic init]];
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    NSLog(@"%@",characteristic);
+}
+
+
 
 -(void)writeChar:(NSData *)data
 {

@@ -46,4 +46,11 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     return  cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.blueteethService startObservedPeripheral:_deviceArray[indexPath.row]];
+}
+
+
+
 @end

@@ -15,6 +15,7 @@
     UITableView *_deviceListTableView;
     NSMutableArray *_deviceArray;
     BlueteethService *_blueteethService;
+    UIButton *_demoButton;
     
 }
 
