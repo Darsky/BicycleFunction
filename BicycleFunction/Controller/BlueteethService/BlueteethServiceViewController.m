@@ -86,25 +86,18 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [SVProgressHUD showWithStatus:@"正在连接"];
-    CBPeripheral *peripheral = _deviceArray[indexPath.row];
-    if ([_blueteethService connect:peripheral])
-    {
-        [SVProgressHUD dismissWithSuccess:@"连接成功"];
-        [_demoButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-        _demoButton.userInteractionEnabled = YES;
-    }
-    else
-    {
-        [SVProgressHUD dismissWithError:@"连接失败"];
-    }
+    BlueteethDemoViewController *viewController = [[BlueteethDemoViewController alloc] init];
+    [self presentViewController:viewController
+                       animated:YES
+                     completion:^{
+                         [viewController startConnectToDevice:_deviceArray[indexPath.row] withService:_blueteethService];}
+     ];
+    
 }
 
 - (void)pushToDemoView
 {
-    BlueteethDemoViewController *viewController = [[BlueteethDemoViewController alloc] init];
-    viewController.blueteethService = _blueteethService;
-    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 

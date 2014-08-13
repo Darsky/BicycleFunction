@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */; };
+		18509570199BB3E200E5D117 /* BlueteethModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850956F199BB3E200E5D117 /* BlueteethModel.m */; };
 		186575E3198344A9000C67CA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 186575E0198344A9000C67CA /* SVProgressHUD.bundle */; };
 		186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 186575E2198344A9000C67CA /* SVProgressHUD.m */; };
 		186575F0198346EC000C67CA /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575E6198346EC000C67CA /* 1.PNG */; };
@@ -68,6 +69,8 @@
 /* Begin PBXFileReference section */
 		1820F34A199774EB006E1915 /* BlueteethDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethDemoViewController.h; sourceTree = "<group>"; };
 		1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethDemoViewController.m; sourceTree = "<group>"; };
+		1850956E199BB3E200E5D117 /* BlueteethModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethModel.h; sourceTree = "<group>"; };
+		1850956F199BB3E200E5D117 /* BlueteethModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethModel.m; sourceTree = "<group>"; };
 		186575E0198344A9000C67CA /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		186575E1198344A9000C67CA /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		186575E2198344A9000C67CA /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 			children = (
 				18F0F11719852AFE00BBE8E7 /* BlueteethService.h */,
 				18F0F11819852AFE00BBE8E7 /* BlueteethService.m */,
+				1850956E199BB3E200E5D117 /* BlueteethModel.h */,
+				1850956F199BB3E200E5D117 /* BlueteethModel.m */,
 			);
 			path = BlueteethConnect;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18509570199BB3E200E5D117 /* BlueteethModel.m in Sources */,
 				1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */,
 				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,

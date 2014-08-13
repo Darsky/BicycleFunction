@@ -52,14 +52,10 @@
     NSLog(@"connect start");
     _connectPeripheral = nil;
     [_manager connectPeripheral:peripheral
-                       options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+                       options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
+                                                           forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
     
     //开一个定时器监控连接超时的情况
-    _connectTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f
-                                                     target:self
-                                                   selector:@selector(connectTimeout:)
-                                                   userInfo:peripheral
-                                                    repeats:NO];
     
     return (YES);
 }
@@ -88,12 +84,14 @@
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    [_connectTimer invalidate];//停止时钟
-    
     NSLog(@"Did connect to peripheral: %@", peripheral);
     _connectPeripheral = peripheral;
     [peripheral setDelegate:self];
     [peripheral discoverServices:nil];
+    if ([self.delegate respondsToSelector:@selector(didPeripheralConnectSuccess)])
+    {
+        [self.delegate didPeripheralConnectSuccess];
+    }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
@@ -106,11 +104,20 @@
     }
     for (CBService *service in peripheral.services)
     {
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"FFE0"]])
+        {
             NSLog(@"Service found with UUID: %@", service.UUID);
-//        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"180F"]])
+            [peripheral discoverCharacteristics:nil forService:service];
+        }
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"FFE5"]])
+        {
+            NSLog(@"Service found with UUID: %@", service.UUID);
+            [peripheral discoverCharacteristics:nil forService:service];
+        }
+
+//        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"FFE5"]])
 //        {
 //            [peripheral discoverCharacteristics:nil forService:service];
-//            break;
 //        }
           //  [peripheral discoverCharacteristics:nil forService:service];
     }
@@ -124,18 +131,36 @@
         NSLog(@"Discovered characteristics for %@ with error: %@", service.UUID, [error localizedDescription]);
         return;
     }
-    
-    
-    for (CBCharacteristic *characteristic in service.characteristics)
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:@"FFE0"]])
     {
-        NSLog(@"Discovered read characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+        for (CBCharacteristic *characteristic in service.characteristics)
+        {
+            NSLog(@"Discovered read characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"FFE4"]])
+            {
+                _readCharacteristic = characteristic;
+                if ([self.delegate respondsToSelector:@selector(didDiscoverReadCharacteristic:)])
+                {
+                    [self.delegate didDiscoverReadCharacteristic:characteristic];
+                }
+            }
+        }
     }
-    
-    
-    for (CBCharacteristic * characteristic in service.characteristics)
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:@"FFE5"]])
     {
-        
-        NSLog(@"Discovered write characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+        for (CBCharacteristic * characteristic in service.characteristics)
+        {
+            
+            NSLog(@"Discovered write characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
+            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"FFE9"]])
+            {
+                if ([self.delegate respondsToSelector:@selector(didDiscoverWriteCharacteristic:)])
+                {
+                    [self.delegate didDiscoverWriteCharacteristic:characteristic];
+                }
+            }
+            
+        }
 
     }
     
@@ -169,17 +194,27 @@
         [_connectTimer invalidate];//停止时钟
     }
 }
-
-- (void)startObservedPeripheral:(CBPeripheral *)peripheral 
+- (void)startObservedPeripheral:(BlueteethModel *)model
 {
-    return;
-    peripheral.delegate = self;
-    [peripheral setNotifyValue:YES forCharacteristic:[CBCharacteristic init]];
+    model.connectPeripheral.delegate = self;
+    [model.connectPeripheral setNotifyValue:YES forCharacteristic:model.readCharacteristic];
+}
+
+-(void)writeChar:(NSData *)data forBlue:(BlueteethModel*)blue
+{
+    blue.connectPeripheral.delegate = self;
+    [blue.connectPeripheral writeValue:data forCharacteristic:blue.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    NSLog(@"%@",[error description]);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"%@",characteristic);
+    NSString *readString = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",readString);
 }
 
 

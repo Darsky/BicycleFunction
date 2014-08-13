@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "BlueteethModel.h"
 
 @protocol BlueteethServiceDelegate <NSObject>
 @optional
 
 - (void)didUpdateConnectPeripheral:(NSArray*)connects;
+- (void)stopConnectPeripheralScan;
+- (void)didDiscoverReadCharacteristic:(CBCharacteristic*)characteristic;
+- (void)didDiscoverWriteCharacteristic:(CBCharacteristic*)characteristic;
+- (void)didPeripheralConnectSuccess;
 
 @end
 
@@ -20,6 +25,7 @@
 {
     NSTimer *_connectTimer;
     CBPeripheral *_connectPeripheral;
+    CBCharacteristic *_readCharacteristic;
     BOOL _BlueteethAvilabel;
 }
 
@@ -39,5 +45,6 @@
 - (BOOL)connect:(CBPeripheral *)peripheral;
 
 //通过模块对蓝牙的操作
-- (void)startObservedPeripheral:(CBPeripheral *)peripheral;
+- (void)startObservedPeripheral:(BlueteethModel *)model;
+-(void)writeChar:(NSData *)data forBlue:(BlueteethModel*)blue;
 @end

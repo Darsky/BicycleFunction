@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "BlueteethService.h"
+#import "BlueteethModel.h"
 
-@interface BlueteethDemoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface BlueteethDemoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,BlueteethServiceDelegate>
 {
+    UILabel *_deviceLabel;
     UITableView *_deviceTableView;
-    NSMutableArray *_deviceArray;
+    NSArray *_actionArray;
 }
 
 
 @property (strong, nonatomic) BlueteethService *blueteethService;
+@property (strong, nonatomic) BlueteethModel *blue;
+
+- (void)startConnectToDevice:(CBPeripheral*)peripheral withService:(BlueteethService*)service;
 @end
