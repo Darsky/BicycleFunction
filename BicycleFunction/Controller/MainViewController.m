@@ -35,20 +35,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor blackColor];
+    //TODO:用你的页面名字替换"测试"
+    _itemsArray = [@[@"导航",@"蓝牙",@"测试"] mutableCopy];
+    _mainCycleView = [[MainCycleView alloc] initWithFrame:CGRectMake(self.view.frame.size.height/2-cycleWidth/2,
+                                                                     320/2-cycleWidth/2,
+                                                                     cycleWidth,
+                                                                     cycleWidth)
+                                                withItems:_itemsArray];
+    _mainCycleView.delegate = self;
+    [self.view addSubview:_mainCycleView];
 }
 
 - (void)loadView
 {
     [super loadView];
-    self.view.backgroundColor = [UIColor blackColor];
-    //TODO:用你的页面名字替换"测试"
-    _itemsArray = [@[@"导航",@"测试"] mutableCopy];
-    _mainCycleView = [[MainCycleView alloc] initWithFrame:CGRectMake(self.view.frame.size.height/2-cycleWidth/2,
-                                                                     320/2-cycleWidth/2,
-                                                                     cycleWidth,
-                                                                     cycleWidth) withItems:_itemsArray];
-    _mainCycleView.delegate = self;
-    [self.view addSubview:_mainCycleView];
+
 }
 
 
@@ -56,10 +58,7 @@
 - (void)showNextViewController:(UISwipeGestureRecognizer*)recognizer
 {
     NSLog(@"kakaka");
-    BicycleNavigationViewController *bicycleNavigationViewController = nil;
-    bicycleNavigationViewController = [[BicycleNavigationViewController alloc] init];
-    [self.navigationController pushViewController:bicycleNavigationViewController
-                                         animated:YES];
+
 }
 
 - (void)didSelectAButton:(NSString *)buttonName
@@ -70,13 +69,17 @@
         {
             case 0:
             {
-                BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
-                [self.navigationController pushViewController:viewController animated:YES];
+                BicycleNavigationViewController *bicycleNavigationViewController = nil;
+                bicycleNavigationViewController = [[BicycleNavigationViewController alloc] init];
+                [self.navigationController pushViewController:bicycleNavigationViewController
+                                                     animated:YES];
             }
                 break;
             case 1:
             {
                 //TODO:在这里初始化你的ViewController并push
+                BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
             }
                 break;
                 

@@ -43,6 +43,11 @@
                 demoButton.frame = CGRectMake(width*2+10, -10+height, 55, 55);
                 }
                     break;
+                case 2:
+                {
+                demoButton.frame = CGRectMake(width, height*2+10, 55, 55);
+                }
+                    break;
                 default:
                     break;
             }
@@ -79,7 +84,8 @@
         }
         CGFloat degree = rotate/M_PI * 180;
         NSLog(@"+++++++++ degree : %f", degree);
-        CGAffineTransform newTransForm = CGAffineTransformRotate(transform, -M_PI/2);
+        CGFloat target = M_PI/2-degree;
+        CGAffineTransform newTransForm = CGAffineTransformRotate(transform, target);
         [self setTransform:newTransForm];
         CGFloat newRotate = acosf(newTransForm.a);
         if (newTransForm.b < 0) {
@@ -88,6 +94,7 @@
         CGFloat newDegree = newRotate/M_PI * 180;
         NSLog(@"+++++++++ newDegree : %f", newDegree);
          */
+
     }
 }
 
