@@ -10,23 +10,48 @@
 
 @implementation MainCycleView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame withItems:(NSArray*)items
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        float width = self.frame.size.width/2-55/2;
+        float height = self.frame.size.height/2-55/2;
+        for (int x = 0; x<items.count; x++)
+        {
+            UIButton *demoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [demoButton setBackgroundColor:[UIColor greenColor]];
+            [demoButton setTitle:items[x]
+                        forState:UIControlStateNormal];
+            demoButton.layer.borderWidth = 2;
+            demoButton.layer.borderColor = [UIColor whiteColor].CGColor;
+            demoButton.layer.masksToBounds = YES;
+            demoButton.layer.cornerRadius = 55/2;
+            [demoButton addTarget:self
+                           action:@selector(didCycleButtonTouch:)
+                 forControlEvents:UIControlEventTouchDown];
+            switch (x) {
+                case 0:
+                {
+                demoButton.frame = CGRectMake(width, -10, 55, 55);
+                }
+                    break;
+                    
+                case 1:
+                {
+                demoButton.frame = CGRectMake(width*2+10, -10+height, 55, 55);
+                }
+                    break;
+                default:
+                    break;
+            }
 
-        UIButton *demoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        demoButton.frame = CGRectMake(self.frame.size.width/2-55/2, -10, 55, 55);
-        [demoButton setBackgroundColor:[UIColor greenColor]];
-        demoButton.layer.borderWidth = 2;
-        demoButton.layer.borderColor = [UIColor whiteColor].CGColor;
-        demoButton.layer.masksToBounds = YES;
-        demoButton.layer.cornerRadius = 55/2;
-        [demoButton addTarget:self
-                       action:@selector(didCycleButtonTouch:)
-             forControlEvents:UIControlEventTouchDown];
-        [self addSubview:demoButton];
+            [self addSubview:demoButton];
+
+
+        }
+
         
         _rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self
                                                                         action:@selector(roteThisView:)];

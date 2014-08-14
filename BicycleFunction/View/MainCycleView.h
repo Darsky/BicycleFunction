@@ -21,6 +21,7 @@
     UIRotationGestureRecognizer *_rotationGesture;
 }
 
+- (id)initWithFrame:(CGRect)frame withItems:(NSArray*)items;
 @property (assign, nonatomic) id <MainCycleViewDelegate> delegate;
 
 @end

@@ -41,10 +41,12 @@
 {
     [super loadView];
     self.view.backgroundColor = [UIColor blackColor];
+    //TODO:用你的页面名字替换"测试"
+    _itemsArray = [@[@"导航",@"测试"] mutableCopy];
     _mainCycleView = [[MainCycleView alloc] initWithFrame:CGRectMake(self.view.frame.size.height/2-cycleWidth/2,
                                                                      320/2-cycleWidth/2,
                                                                      cycleWidth,
-                                                                     cycleWidth)];
+                                                                     cycleWidth) withItems:_itemsArray];
     _mainCycleView.delegate = self;
     [self.view addSubview:_mainCycleView];
 }
@@ -62,8 +64,26 @@
 
 - (void)didSelectAButton:(NSString *)buttonName
 {
-    BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    if ([_itemsArray containsObject:buttonName])
+    {
+        switch ([_itemsArray indexOfObject:buttonName])
+        {
+            case 0:
+            {
+                BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
+            }
+                break;
+            case 1:
+            {
+                //TODO:在这里初始化你的ViewController并push
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,5 +10,8 @@
 #import "BaseSwipViewController.h"
 
 @interface MainViewController : BaseSwipViewController
+{
+    NSMutableArray *_itemsArray;
+}
 
 @end
