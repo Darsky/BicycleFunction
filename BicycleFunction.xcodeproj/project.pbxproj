@@ -54,6 +54,7 @@
 		DEA58635197DF5530085B208 /* MainCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA58634197DF5530085B208 /* MainCycleView.m */; };
 		DEA58638197DF5E50085B208 /* BicycleNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DEA58637197DF5E50085B208 /* BicycleNavigationViewController.mm */; };
 		DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA5863B197E00950085B208 /* BaseSwipViewController.m */; };
+		DEC26CF6199C9F710015EC2F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC26CF5199C9F710015EC2F /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		DEA58637197DF5E50085B208 /* BicycleNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BicycleNavigationViewController.mm; sourceTree = "<group>"; };
 		DEA5863A197E00950085B208 /* BaseSwipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSwipViewController.h; sourceTree = "<group>"; };
 		DEA5863B197E00950085B208 /* BaseSwipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSwipViewController.m; sourceTree = "<group>"; };
+		DEC26CF5199C9F710015EC2F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +459,7 @@
 				DEA58631197DF4DE0085B208 /* BicycleNavigation */,
 				DEA5862E197DF49C0085B208 /* MainViewController.h */,
 				DEA5862F197DF49C0085B208 /* MainViewController.m */,
+				DEC26CF5199C9F710015EC2F /* MainViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				186575F2198346EC000C67CA /* 2.PNG in Resources */,
 				186575F5198346EC000C67CA /* 5.PNG in Resources */,
 				186575E3198344A9000C67CA /* SVProgressHUD.bundle in Resources */,
+				DEC26CF6199C9F710015EC2F /* MainViewController.xib in Resources */,
 				186575F1198346EC000C67CA /* 10.PNG in Resources */,
 				186575F0198346EC000C67CA /* 1.PNG in Resources */,
 				186575F9198346EC000C67CA /* 9.PNG in Resources */,

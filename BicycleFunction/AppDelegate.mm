@@ -24,7 +24,8 @@
  //   [BNCoreServices_Instance initServices:@"uxtKsdF57rFjveFFyry1DuPo"];
 //    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.viewController = [[MainViewController alloc] init];
+    self.viewController = [[MainViewController alloc] initWithNibName:@"MainViewController"
+                                                               bundle:[NSBundle mainBundle]];
     self.viewController.direction = UISwipeGestureRecognizerDirectionLeft;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     nav.navigationBarHidden = YES;
