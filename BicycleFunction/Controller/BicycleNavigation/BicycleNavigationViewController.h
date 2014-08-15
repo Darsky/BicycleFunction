@@ -17,6 +17,7 @@
     BMKLocationService *_locService;
     BMKGeoCodeSearch *_searcher;
     BMKRouteSearch *_routeSearch;
+    BMKPoiSearch *_poiSearcher;
 }
 
 @end

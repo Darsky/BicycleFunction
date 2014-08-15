@@ -8,12 +8,14 @@
 
 #import "BicycleNavigationViewController.h"
 #import "SVProgressHUD.h"
+#import "AmbitusSearchView.h"
 
-@interface BicycleNavigationViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,BMKGeoCodeSearchDelegate,BMKRouteSearchDelegate,BMKOfflineMapDelegate>
+@interface BicycleNavigationViewController ()<BMKMapViewDelegate,BMKLocationServiceDelegate,BMKPoiSearchDelegate,BMKGeoCodeSearchDelegate,BMKRouteSearchDelegate,BMKOfflineMapDelegate,AmbitusSearchViewDelegate>
 {
     BOOL _setCenter;
     CLLocationCoordinate2D _userCoordinate;
     BMKUserLocation *_userLocation;
+    AmbitusSearchView *_ambSearchView;
     BOOL _Offline;
 }
 
@@ -34,7 +36,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(50, 20,[UIScreen mainScreen].bounds.size.height-100, [UIScreen mainScreen].bounds.size.width-50)];
+    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(70, 20,[UIScreen mainScreen].bounds.size.height-140, [UIScreen mainScreen].bounds.size.width-50)];
 //    _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(20,0, [UIScreen mainScreen].bounds.size.width-50, [UIScreen mainScreen].bounds.size.height)];
 //    _mapView.transform = CGAffineTransformMakeRotation(M_PI);
     _setCenter = YES;
@@ -63,13 +65,18 @@
     [backbutton addTarget:self action:@selector(backToMainViewController) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:backbutton];
     
-    UIButton *dowOfflinedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    dowOfflinedButton.frame = CGRectMake(0, _mapView.frame.size.height/2, 50, 50);
-    [dowOfflinedButton setTitle:@"离线" forState:UIControlStateNormal];
-    [dowOfflinedButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [dowOfflinedButton setBackgroundColor:[UIColor whiteColor]];
-    [dowOfflinedButton addTarget:self action:@selector(startDownloadOffLineMAP) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:dowOfflinedButton];
+    UIButton *ambitusSearchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    ambitusSearchButton.frame = CGRectMake(self.view.bounds.size.height-70, _mapView.frame.size.height/2, 70, 80);
+    ambitusSearchButton.backgroundColor = [UIColor grayColor];
+    [ambitusSearchButton setTitle:@"周边" forState:UIControlStateNormal];
+    [ambitusSearchButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [ambitusSearchButton addTarget:self action:@selector(showOrHideAmbitusSearchView) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:ambitusSearchButton];
+
+    _ambSearchView = [[AmbitusSearchView alloc] initWithFrame:CGRectMake(30, 20, 460, 260)];
+    _ambSearchView.delegate = self;
+    [self.view addSubview:_ambSearchView];
+    _ambSearchView.hidden = YES;
     _Offline = NO;
 
     
@@ -99,6 +106,7 @@
     _mapView.delegate = nil;
     _searcher.delegate = nil;
     _routeSearch.delegate = nil;
+    _poiSearcher.delegate = nil;
 }
 
 
@@ -197,7 +205,7 @@
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
         newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-        newAnnotationView.selected = YES;
+        newAnnotationView.selected = NO;
         return newAnnotationView;
     }
     return nil;
@@ -369,6 +377,57 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 
+}
+
+- (void)showOrHideAmbitusSearchView
+{
+    _ambSearchView.hidden = !_ambSearchView.hidden;
+}
+
+#pragma mark - AmbitusSearchViewDelegate Method
+- (void)didSearchButtonPressed:(NSString *)searchTitle
+{
+    if (!_poiSearcher)
+    {
+        _poiSearcher = [[BMKPoiSearch alloc] init];
+        _poiSearcher.delegate = self;
+    }
+    BMKNearbySearchOption *option = [[BMKNearbySearchOption alloc] init];
+    option.location = _userLocation.location.coordinate;
+    option.keyword = searchTitle;
+    BOOL flag = [_poiSearcher poiSearchNearBy:option];
+    if(flag)
+    {
+        NSLog(@"周边检索发送成功");
+    }
+    else
+    {
+        NSLog(@"周边检索发送失败");
+    }
+}
+
+- (void)onGetPoiResult:(BMKPoiSearch*)searcher result:(BMKPoiResult*)poiResultList errorCode:(BMKSearchErrorCode)error
+{
+    if (error == BMK_SEARCH_NO_ERROR)
+    {
+        //在此处理正常结果
+        [_mapView removeAnnotations:_mapView.annotations];
+        for (BMKPoiInfo *poiInfo in poiResultList.poiInfoList)
+        {
+            BMKPointAnnotation* pointAnnotation = [[BMKPointAnnotation alloc]init];
+            pointAnnotation.coordinate = poiInfo.pt;
+            pointAnnotation.title = poiInfo.name;
+            [_mapView addAnnotation:pointAnnotation];
+        }
+        [self showOrHideAmbitusSearchView];
+    }
+    else if (error == BMK_SEARCH_AMBIGUOUS_KEYWORD){
+        //当在设置城市未找到结果，但在其他城市找到结果时，回调建议检索城市列表
+        // result.cityList;
+        NSLog(@"起始点有歧义");
+    } else {
+        NSLog(@"抱歉，未找到结果");
+    }
 }
 
 - (void)showNextViewController:(UISwipeGestureRecognizer*)recognizer

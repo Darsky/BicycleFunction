@@ -151,9 +151,9 @@
         for (CBCharacteristic * characteristic in service.characteristics)
         {
             
-            NSLog(@"Discovered write characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
             if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"FFE9"]])
             {
+                NSLog(@"Discovered write characteristics:%@ for service: %@", characteristic.UUID, service.UUID);
                 if ([self.delegate respondsToSelector:@selector(didDiscoverWriteCharacteristic:)])
                 {
                     [self.delegate didDiscoverWriteCharacteristic:characteristic];
@@ -203,12 +203,14 @@
 -(void)writeChar:(NSData *)data forBlue:(BlueteethModel*)blue
 {
     blue.connectPeripheral.delegate = self;
-    [blue.connectPeripheral writeValue:data forCharacteristic:blue.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    [blue.connectPeripheral writeValue:data
+                     forCharacteristic:blue.writeCharacteristic
+                                  type:CBCharacteristicWriteWithResponse];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"%@",[error description]);
+    NSLog(@"write Value%@",characteristic.value);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180DBC4A199E6683009CD950 /* AmbitusSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DBC49199E6683009CD950 /* AmbitusSearchView.m */; };
 		1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */; };
 		18509570199BB3E200E5D117 /* BlueteethModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850956F199BB3E200E5D117 /* BlueteethModel.m */; };
 		186575E3198344A9000C67CA /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 186575E0198344A9000C67CA /* SVProgressHUD.bundle */; };
@@ -70,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180DBC48199E6683009CD950 /* AmbitusSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmbitusSearchView.h; sourceTree = SOURCE_ROOT; };
+		180DBC49199E6683009CD950 /* AmbitusSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmbitusSearchView.m; sourceTree = SOURCE_ROOT; };
 		1820F34A199774EB006E1915 /* BlueteethDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethDemoViewController.h; sourceTree = "<group>"; };
 		1820F34B199774EB006E1915 /* BlueteethDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethDemoViewController.m; sourceTree = "<group>"; };
 		1850956E199BB3E200E5D117 /* BlueteethModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethModel.h; sourceTree = "<group>"; };
@@ -501,6 +504,8 @@
 		DEA58632197DF5260085B208 /* BicycleNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				180DBC48199E6683009CD950 /* AmbitusSearchView.h */,
+				180DBC49199E6683009CD950 /* AmbitusSearchView.m */,
 			);
 			path = BicycleNavigation;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180DBC4A199E6683009CD950 /* AmbitusSearchView.m in Sources */,
 				18509570199BB3E200E5D117 /* BlueteethModel.m in Sources */,
 				1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */,
 				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
