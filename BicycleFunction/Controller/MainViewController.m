@@ -10,6 +10,7 @@
 #import "MainCycleView.h"
 #import "BicycleNavigationViewController.h"
 #import "BlueteethServiceViewController.h"
+#import "GyroscopeViewController.h"
 
 #define cycleWidth 230.0
 
@@ -37,7 +38,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
     //TODO:用你的页面名字替换"测试"
-    _itemsArray = [@[@"导航",@"蓝牙",@"测试"] mutableCopy];
+    _itemsArray = [@[@"导航",@"蓝牙",@"陀螺仪",@"测试"] mutableCopy];
     _mainCycleView = [[MainCycleView alloc] initWithFrame:CGRectMake(self.view.frame.size.height/2-cycleWidth/2,
                                                                      320/2-cycleWidth/2,
                                                                      cycleWidth,
@@ -76,6 +77,20 @@
             }
                 break;
             case 1:
+            {
+                BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
+            }
+                break;
+            case 2:
+            {
+                GyroscopeViewController *viewController = [[GyroscopeViewController alloc] init];
+                [viewController setDirection:UISwipeGestureRecognizerDirectionLeft];
+                [self.navigationController pushViewController:viewController animated:YES];
+                
+            }
+                break;
+            case 3:
             {
                 //TODO:在这里初始化你的ViewController并push
                 BlueteethServiceViewController *viewController = [[BlueteethServiceViewController alloc] init];

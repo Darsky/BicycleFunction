@@ -10,6 +10,6 @@
 
 @interface BaseSwipViewController : UIViewController<UIGestureRecognizerDelegate>
 
-@property (nonatomic) UISwipeGestureRecognizerDirection direction;
+@property (assign,nonatomic) UISwipeGestureRecognizerDirection direction;
 
 @end

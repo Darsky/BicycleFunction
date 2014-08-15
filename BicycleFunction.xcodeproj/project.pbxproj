@@ -54,6 +54,8 @@
 		DEA58635197DF5530085B208 /* MainCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA58634197DF5530085B208 /* MainCycleView.m */; };
 		DEA58638197DF5E50085B208 /* BicycleNavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DEA58637197DF5E50085B208 /* BicycleNavigationViewController.mm */; };
 		DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA5863B197E00950085B208 /* BaseSwipViewController.m */; };
+		DEAC4A55199E0A6400446F13 /* GyroscopeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAC4A54199E0A6400446F13 /* GyroscopeModule.m */; };
+		DEAC4A59199E0CB500446F13 /* GyroscopeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAC4A58199E0CB500446F13 /* GyroscopeViewController.m */; };
 		DEC26CF6199C9F710015EC2F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC26CF5199C9F710015EC2F /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +189,10 @@
 		DEA58637197DF5E50085B208 /* BicycleNavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BicycleNavigationViewController.mm; sourceTree = "<group>"; };
 		DEA5863A197E00950085B208 /* BaseSwipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSwipViewController.h; sourceTree = "<group>"; };
 		DEA5863B197E00950085B208 /* BaseSwipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSwipViewController.m; sourceTree = "<group>"; };
+		DEAC4A53199E0A6400446F13 /* GyroscopeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GyroscopeModule.h; sourceTree = "<group>"; };
+		DEAC4A54199E0A6400446F13 /* GyroscopeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GyroscopeModule.m; sourceTree = "<group>"; };
+		DEAC4A57199E0CB500446F13 /* GyroscopeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GyroscopeViewController.h; sourceTree = "<group>"; };
+		DEAC4A58199E0CB500446F13 /* GyroscopeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GyroscopeViewController.m; sourceTree = "<group>"; };
 		DEC26CF5199C9F710015EC2F /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -446,6 +452,7 @@
 		DEA5862A197DF4850085B208 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DEAC4A52199E0A5000446F13 /* GyroscopeModule */,
 				18F0F11619852AE700BBE8E7 /* BlueteethConnect */,
 			);
 			path = Model;
@@ -454,6 +461,7 @@
 		DEA5862B197DF4850085B208 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DEAC4A56199E0CA100446F13 /* GyroscopeModule */,
 				18F0F11C19852EC800BBE8E7 /* BlueteethService */,
 				DEA58639197E00840085B208 /* BaseViewController */,
 				DEA58631197DF4DE0085B208 /* BicycleNavigation */,
@@ -504,6 +512,24 @@
 				DEA5863B197E00950085B208 /* BaseSwipViewController.m */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		DEAC4A52199E0A5000446F13 /* GyroscopeModule */ = {
+			isa = PBXGroup;
+			children = (
+				DEAC4A53199E0A6400446F13 /* GyroscopeModule.h */,
+				DEAC4A54199E0A6400446F13 /* GyroscopeModule.m */,
+			);
+			path = GyroscopeModule;
+			sourceTree = "<group>";
+		};
+		DEAC4A56199E0CA100446F13 /* GyroscopeModule */ = {
+			isa = PBXGroup;
+			children = (
+				DEAC4A57199E0CB500446F13 /* GyroscopeViewController.h */,
+				DEAC4A58199E0CB500446F13 /* GyroscopeViewController.m */,
+			);
+			path = GyroscopeModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,10 +645,12 @@
 				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,
 				186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */,
+				DEAC4A59199E0CB500446F13 /* GyroscopeViewController.m in Sources */,
 				DEA5860B197DF4530085B208 /* AppDelegate.mm in Sources */,
 				DEA58638197DF5E50085B208 /* BicycleNavigationViewController.mm in Sources */,
 				DEA58630197DF49C0085B208 /* MainViewController.m in Sources */,
 				DEA58635197DF5530085B208 /* MainCycleView.m in Sources */,
+				DEAC4A55199E0A6400446F13 /* GyroscopeModule.m in Sources */,
 				DEA58607197DF4530085B208 /* main.m in Sources */,
 				18F0F11F19852EED00BBE8E7 /* BlueteethServiceViewController.m in Sources */,
 			);
