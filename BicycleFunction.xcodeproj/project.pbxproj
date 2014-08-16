@@ -39,6 +39,7 @@
 		DE40B3A2197E1D3700286876 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE40B3A1197E1D3700286876 /* SystemConfiguration.framework */; };
 		DE40B3A4197E1D4600286876 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE40B3A3197E1D4600286876 /* Security.framework */; };
 		DE40B3A6197E1D5600286876 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE40B3A5197E1D5600286876 /* mapapi.bundle */; };
+		DEA46A79199EF1AF0050AEEB /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA46A78199EF1AF0050AEEB /* Utility.m */; };
 		DEA585FB197DF4530085B208 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA585FA197DF4530085B208 /* Foundation.framework */; };
 		DEA585FD197DF4530085B208 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA585FC197DF4530085B208 /* CoreGraphics.framework */; };
 		DEA585FF197DF4530085B208 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA585FE197DF4530085B208 /* UIKit.framework */; };
@@ -168,6 +169,8 @@
 		DE40B3A1197E1D3700286876 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DE40B3A3197E1D4600286876 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DE40B3A5197E1D5600286876 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		DEA46A77199EF1AF0050AEEB /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		DEA46A78199EF1AF0050AEEB /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		DEA585F7197DF4530085B208 /* BicycleFunction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BicycleFunction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA585FA197DF4530085B208 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEA585FC197DF4530085B208 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -354,6 +357,15 @@
 			path = BaiduMap;
 			sourceTree = "<group>";
 		};
+		DEA46A76199EF19E0050AEEB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DEA46A77199EF1AF0050AEEB /* Utility.h */,
+				DEA46A78199EF1AF0050AEEB /* Utility.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		DEA585EE197DF4530085B208 = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +467,7 @@
 		DEA5862A197DF4850085B208 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DEA46A76199EF19E0050AEEB /* Utility */,
 				DEAC4A52199E0A5000446F13 /* GyroscopeModule */,
 				18F0F11619852AE700BBE8E7 /* BlueteethConnect */,
 			);
@@ -652,6 +665,7 @@
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,
 				186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */,
 				DEAC4A59199E0CB500446F13 /* GyroscopeViewController.m in Sources */,
+				DEA46A79199EF1AF0050AEEB /* Utility.m in Sources */,
 				DEA5860B197DF4530085B208 /* AppDelegate.mm in Sources */,
 				DEA58638197DF5E50085B208 /* BicycleNavigationViewController.mm in Sources */,
 				DEA58630197DF49C0085B208 /* MainViewController.m in Sources */,

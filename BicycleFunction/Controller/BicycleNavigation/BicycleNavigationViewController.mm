@@ -66,11 +66,16 @@
     [self.view addSubview:backbutton];
     
     UIButton *ambitusSearchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    ambitusSearchButton.frame = CGRectMake(self.view.bounds.size.height-70, _mapView.frame.size.height/2, 70, 80);
-    ambitusSearchButton.backgroundColor = [UIColor grayColor];
+    ambitusSearchButton.frame = CGRectMake(self.view.bounds.size.height-70, _mapView.frame.size.height/2, 70, _mapView.frame.size.height/2);
+    ambitusSearchButton.backgroundColor = [UIColor whiteColor];
     [ambitusSearchButton setTitle:@"周边" forState:UIControlStateNormal];
-    [ambitusSearchButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [ambitusSearchButton addTarget:self action:@selector(showOrHideAmbitusSearchView) forControlEvents:UIControlEventTouchDown];
+    [ambitusSearchButton setTitleColor:[UIColor grayColor]
+                              forState:UIControlStateNormal];
+    [ambitusSearchButton addTarget:self
+                            action:@selector(showOrHideAmbitusSearchView)
+                  forControlEvents:UIControlEventTouchDown];
+    ambitusSearchButton.layer.borderColor = [UIColor grayColor].CGColor;
+    ambitusSearchButton.layer.borderWidth = 1;
     [self.view addSubview:ambitusSearchButton];
 
     _ambSearchView = [[AmbitusSearchView alloc] initWithFrame:CGRectMake(30, 20, 460, 260)];
@@ -387,6 +392,8 @@
 #pragma mark - AmbitusSearchViewDelegate Method
 - (void)didSearchButtonPressed:(NSString *)searchTitle
 {
+    [self showOrHideAmbitusSearchView];
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"正在搜索附近的%@",searchTitle]];
     if (!_poiSearcher)
     {
         _poiSearcher = [[BMKPoiSearch alloc] init];
@@ -402,6 +409,7 @@
     }
     else
     {
+        [SVProgressHUD dismissWithError:@"搜索失败，请确保网络是否正常"];
         NSLog(@"周边检索发送失败");
     }
 }
@@ -411,7 +419,7 @@
     if (error == BMK_SEARCH_NO_ERROR)
     {
         //在此处理正常结果
-        [_mapView removeAnnotations:_mapView.annotations];
+        [self cleanAllElementInMap];
         for (BMKPoiInfo *poiInfo in poiResultList.poiInfoList)
         {
             BMKPointAnnotation* pointAnnotation = [[BMKPointAnnotation alloc]init];
@@ -419,20 +427,47 @@
             pointAnnotation.title = poiInfo.name;
             [_mapView addAnnotation:pointAnnotation];
         }
-        [self showOrHideAmbitusSearchView];
+        [SVProgressHUD showSuccessWithStatus:@"搜搜成功"];
     }
     else if (error == BMK_SEARCH_AMBIGUOUS_KEYWORD){
         //当在设置城市未找到结果，但在其他城市找到结果时，回调建议检索城市列表
         // result.cityList;
         NSLog(@"起始点有歧义");
+        [SVProgressHUD dismiss];
+        [Utility showMessageWithMessage:@"起始点有歧义" withMessageType:UtilityAlertTypeError];
     } else {
         NSLog(@"抱歉，未找到结果");
+        [Utility showMessageWithMessage:@"抱歉，未找到结果" withMessageType:UtilityAlertTypeError];
     }
 }
 
 - (void)showNextViewController:(UISwipeGestureRecognizer*)recognizer
 {
     [self backToMainViewController];
+}
+
+- (void)cleanAllElementInMap
+{
+    [self cleanAllOverLayView];
+    [self cleanAllAnnotationsInMap];
+}
+
+- (void)cleanAllOverLayView
+{
+    if (_mapView.overlays.count > 0)
+    {
+        NSArray* array = [NSArray arrayWithArray:_mapView.overlays];
+        [_mapView removeOverlays:array];
+    }
+}
+
+- (void)cleanAllAnnotationsInMap
+{
+    if (_mapView.annotations.count > 0)
+    {
+        NSArray* array = [NSArray arrayWithArray:_mapView.annotations];
+        [_mapView removeAnnotations:array];
+    }
 }
 /*
 #pragma mark - Navigation
