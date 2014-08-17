@@ -22,6 +22,7 @@
 		186575F7198346EC000C67CA /* 7.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575ED198346EC000C67CA /* 7.PNG */; };
 		186575F8198346EC000C67CA /* 8.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575EE198346EC000C67CA /* 8.PNG */; };
 		186575F9198346EC000C67CA /* 9.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 186575EF198346EC000C67CA /* 9.PNG */; };
+		18C514A019A108F300244B3D /* MainWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C5149F19A108F300244B3D /* MainWindowView.m */; };
 		18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0F11819852AFE00BBE8E7 /* BlueteethService.m */; };
 		18F0F11B19852B5C00BBE8E7 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F0F11A19852B5C00BBE8E7 /* CoreBluetooth.framework */; };
 		18F0F11F19852EED00BBE8E7 /* BlueteethServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0F11E19852EED00BBE8E7 /* BlueteethServiceViewController.m */; };
@@ -91,6 +92,8 @@
 		186575ED198346EC000C67CA /* 7.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.PNG; sourceTree = "<group>"; };
 		186575EE198346EC000C67CA /* 8.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.PNG; sourceTree = "<group>"; };
 		186575EF198346EC000C67CA /* 9.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.PNG; sourceTree = "<group>"; };
+		18C5149E19A108F300244B3D /* MainWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowView.h; sourceTree = "<group>"; };
+		18C5149F19A108F300244B3D /* MainWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowView.m; sourceTree = "<group>"; };
 		18F0F11719852AFE00BBE8E7 /* BlueteethService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueteethService.h; sourceTree = "<group>"; };
 		18F0F11819852AFE00BBE8E7 /* BlueteethService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueteethService.m; sourceTree = "<group>"; };
 		18F0F11A19852B5C00BBE8E7 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -460,6 +463,8 @@
 				DEA58632197DF5260085B208 /* BicycleNavigation */,
 				DEA58633197DF5530085B208 /* MainCycleView.h */,
 				DEA58634197DF5530085B208 /* MainCycleView.m */,
+				18C5149E19A108F300244B3D /* MainWindowView.h */,
+				18C5149F19A108F300244B3D /* MainWindowView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				180DBC4A199E6683009CD950 /* AmbitusSearchView.m in Sources */,
 				18509570199BB3E200E5D117 /* BlueteethModel.m in Sources */,
 				1820F34C199774EB006E1915 /* BlueteethDemoViewController.m in Sources */,
+				18C514A019A108F300244B3D /* MainWindowView.m in Sources */,
 				18F0F11919852AFE00BBE8E7 /* BlueteethService.m in Sources */,
 				DEA5863C197E00950085B208 /* BaseSwipViewController.m in Sources */,
 				186575E4198344A9000C67CA /* SVProgressHUD.m in Sources */,

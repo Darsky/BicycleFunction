@@ -53,14 +53,15 @@
             }
 
             [self addSubview:demoButton];
-
-
         }
 
         
-        _rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self
-                                                                        action:@selector(roteThisView:)];
-        [self addGestureRecognizer:_rotationGesture];
+//        _rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self
+//                                                                        action:@selector(roteThisView:)];
+//        [self addGestureRecognizer:_rotationGesture];
+        
+        _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisView:)];
+        [self addGestureRecognizer:_panGesture];
     }
     return self;
 }
@@ -96,6 +97,24 @@
          */
 
     }
+}
+
+- (void)panThisView:(UIPanGestureRecognizer*)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateChanged)
+    {
+        CGPoint velocity = [recognizer velocityInView:recognizer.view];
+        NSLog(@"%f",velocity.x);
+        if (velocity.x >0)
+        {
+            self.transform = CGAffineTransformRotate(self.transform, -0.05);
+        }
+        else
+        {
+            self.transform = CGAffineTransformRotate(self.transform, 0.05);
+        }
+    }
+
 }
 
 - (void)didCycleButtonTouch:(UIButton*)sender

@@ -36,7 +36,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blackColor];
+    NSDictionary *appPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"appPreference"];
+    
+    self.view.backgroundColor = [appPreference objectForKey:@"color"];
     //TODO:用你的页面名字替换"测试"
     _itemsArray = [@[@"导航",@"蓝牙",@"陀螺仪",@"测试"] mutableCopy];
     _mainCycleView = [[MainCycleView alloc] initWithFrame:CGRectMake(self.view.frame.size.height/2-cycleWidth/2,
@@ -46,6 +48,24 @@
                                                 withItems:_itemsArray];
     _mainCycleView.delegate = self;
     [self.view addSubview:_mainCycleView];
+    
+    NSArray *title = @[@"个人",@"功能",@"喜好",@"设置"];
+    for (int x = 0; x<4; x++)
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(5, 20+75*x, 40, 40);
+        [button setTitle:title[x] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        button.layer.borderWidth = 1;
+        button.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        button.layer.masksToBounds = YES;
+        button.layer.cornerRadius = 5;
+        button.tag = x;
+        [button addTarget:self action:@selector(showFunctionSubView:) forControlEvents:UIControlEventTouchDown];
+        [self.view addSubview:button];
+        
+        
+    }
 }
 
 - (void)loadView
@@ -103,6 +123,12 @@
         }
     }
 }
+
+- (void)showFunctionSubView:(UIButton*)sender
+{
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -24,15 +24,15 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
     
     [self.view addSubview:_deviceListTableView];
     
-    _demoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _demoButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.height/2-100/2, _deviceListTableView.frame.origin.y+_deviceListTableView.frame.size.height+10, 100, 30);
-    [_demoButton setTitle:@"开始测试" forState:UIControlStateNormal];
-    [_demoButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    _demoButton.userInteractionEnabled = NO;
-    [_demoButton addTarget:self
+    _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _backButton.frame = CGRectMake(5, 30, 40, 30);
+    [_backButton setTitle:@"back" forState:UIControlStateNormal];
+    [_backButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    _backButton.userInteractionEnabled = YES;
+    [_backButton addTarget:self
                     action:@selector(pushToDemoView)
           forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:_demoButton];
+    [self.view addSubview:_backButton];
 }
 
 - (void)viewDidLoad
@@ -97,7 +97,7 @@ static NSString *cellIdentifier = @"DeviceListTableViewCell";
 
 - (void)pushToDemoView
 {
-
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

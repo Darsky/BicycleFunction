@@ -19,6 +19,7 @@
 {
     NSMutableArray *_buttonsArray;
     UIRotationGestureRecognizer *_rotationGesture;
+    UIPanGestureRecognizer *_panGesture;
 }
 
 - (id)initWithFrame:(CGRect)frame withItems:(NSArray*)items;

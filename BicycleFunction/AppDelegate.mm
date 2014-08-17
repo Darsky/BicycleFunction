@@ -21,6 +21,11 @@
     if (!ret) {
         NSLog(@"manager start failed!");
     }
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"appPreference"])
+    {
+        NSDictionary *appPreference = @{@"color":[UIColor redColor]};
+        [[NSUserDefaults standardUserDefaults] setObject:appPreference forKey:@"appPreference"];
+    }
  //   [BNCoreServices_Instance initServices:@"uxtKsdF57rFjveFFyry1DuPo"];
 //    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     self.window.backgroundColor = [UIColor whiteColor];
